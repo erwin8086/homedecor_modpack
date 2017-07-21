@@ -304,7 +304,8 @@ minetest.register_craft( {
 
 --
 
-minetest.register_craft({
+-- Disable this recipe, now use the extractor
+--[[minetest.register_craft({
     type = "shapeless",
     output = "homedecor:oil_extract 4",
     recipe = {
@@ -315,13 +316,24 @@ minetest.register_craft({
 		"group:leaves",
 		"group:leaves"
 	}
+})]]
+
+-- Nerf this recipe so you better use the extractor
+minetest.register_craft({
+	output = "homedecor:paraffin",
+	type = "shapeless",
+	recipe = {"homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "default:torch"},
 })
 
-minetest.register_craft({
-        type = "cooking",
-        output = "homedecor:paraffin",
-        recipe = "homedecor:oil_extract",
-})
+-- The extractor recipes
+for name, def in pairs(minetest.registered_items) do
+	if def.groups.leaves then
+		technic.register_extractor_recipe({ input = {name.." 3"}, output = "homedecor:oil_extract 2"})
+	end
+end
+
+
+technic.register_extractor_recipe({ input = {"homedecor:oil_extract 4"}, output = {"homedecor:paraffin 2", "technic:lube"}})
 
 minetest.register_craft({
         type = "cooking",
