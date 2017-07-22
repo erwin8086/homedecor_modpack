@@ -322,7 +322,7 @@ minetest.register_craft( {
 minetest.register_craft({
 	output = "homedecor:paraffin",
 	type = "shapeless",
-	recipe = {"homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "default:torch"},
+	recipe = {"homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "homedecor:oil_extract", "default:torch"},
 })
 
 -- The extractor recipes
@@ -334,6 +334,22 @@ end
 
 
 technic.register_extractor_recipe({ input = {"homedecor:oil_extract 4"}, output = {"homedecor:paraffin 2", "technic:lube"}})
+
+
+-- Show the recipes in unified_inventory...
+unified_inventory.register_craft({
+	type="extracting",
+	output = "homedecor:paraffin 2",
+	items = {"homedecor:oil_extract 4"},
+	width = 0,
+})
+
+unified_inventory.register_craft({
+	type="extracting",
+	output = "technic:lube",
+	items = {"homedecor:oil_extract 4"},
+	width = 0,
+})
 
 minetest.register_craft({
         type = "cooking",
