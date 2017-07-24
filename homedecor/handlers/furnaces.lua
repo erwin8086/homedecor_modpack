@@ -178,6 +178,9 @@ function homedecor.register_furnace(name, furnacedef)
 
 	local nname, name_active = "homedecor:"..name, "homedecor:"..n_active
 
+	spoil.register_inv(nname, {"src", "dst", "fuel"})
+	spoil.register_inv(name_active, {"src", "dst", "fuel"})
+
 	minetest.register_abm({
 		nodenames = {nname, name_active, nname.."_locked", name_active.."_locked"},
 		label = "furnaces",

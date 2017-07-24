@@ -107,6 +107,8 @@ minetest.register_node("inbox:empty", {
 	end,
 })
 
+spoil.register_inv("inbox:empty", {"main"})
+
 function inbox.get_inbox_formspec(pos)
 	local spos = pos.x .. "," .. pos.y .. "," ..pos.z
 	local formspec =

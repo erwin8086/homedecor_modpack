@@ -167,6 +167,8 @@ function homedecor.handle_inventory(name, def, original_def)
 			return 0
 		end
 	end
+	-- Register inventory
+	spoil.register_inv("homedecor:"..name, {"main"})
 
 	local lockable = inventory.lockable
 	if lockable then
@@ -184,6 +186,9 @@ function homedecor.handle_inventory(name, def, original_def)
 			output = "homedecor:" .. locked_name,
 			recipe = { "homedecor:" .. name, "default:steel_ingot" }
 		})
+
+		-- And locked too
+		spoil.register_inv("homedecor:"..locked_name, {"main"})
 	end
 
 end

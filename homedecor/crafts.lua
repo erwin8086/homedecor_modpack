@@ -122,6 +122,7 @@ minetest.register_craftitem("homedecor:soda_can", {
 	description = S("Soda Can"),
 	inventory_image = "homedecor_soda_can.png",
 	on_use = minetest.item_eat(2),
+	spoil=600,
 })
 
 minetest.register_craftitem("homedecor:coin", {
