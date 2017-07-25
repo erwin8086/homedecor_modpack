@@ -70,7 +70,7 @@ minetest.register_node("chains:chain_top_brass", {
 	selection_box = topchains_sbox,
 })
 
-minetest.register_node("chains:chandelier", {
+light.register_light("chains:chandelier", {
 	description = S("Chandelier (wrought iron)"),
 	paramtype = "light",
 	light_source = default.LIGHT_MAX-2,
@@ -94,9 +94,12 @@ minetest.register_node("chains:chandelier", {
 	mesh = "chains_chandelier.obj",
 	groups = {cracky=3},
 	sounds =  default.node_sound_stone_defaults(),
+	-- For light
+	power_type="fuel",
+	burntime=10,
 })
 
-minetest.register_node("chains:chandelier_brass", {
+light.register_light("chains:chandelier_brass", {
 	description = S("Chandelier (brass)"),
 	paramtype = "light",
 	light_source = default.LIGHT_MAX-2,
@@ -120,6 +123,9 @@ minetest.register_node("chains:chandelier_brass", {
 	mesh = "chains_chandelier.obj",
 	groups = {cracky=3},
 	sounds =  default.node_sound_stone_defaults(),
+	-- For light
+	power_type="fuel",
+	burntime=10,
 })
 
 -- crafts

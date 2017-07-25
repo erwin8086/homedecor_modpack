@@ -3,7 +3,7 @@ local S = homedecor_i18n.gettext
 
 lavalamp = {}
 
-minetest.register_node("lavalamp:lavalamp", {
+light.register_light("lavalamp:lavalamp", {
 	description = S("Lava Lamp"),
 	drawtype = "mesh",
 	mesh = "lavalamp.obj",
@@ -45,7 +45,10 @@ minetest.register_node("lavalamp:lavalamp", {
 		node.name = "lavalamp:lavalamp_off"
 		minetest.swap_node(pos, node)
 		return itemstack
-	end
+	end,
+	-- For light
+	power_type="electric",
+	eu_demand=5,
 })
 
 minetest.register_node("lavalamp:lavalamp_off", {
@@ -66,7 +69,7 @@ minetest.register_node("lavalamp:lavalamp_off", {
 		type = "fixed",
 		fixed = { -0.25, -0.5, -0.25, 0.25,0.5, 0.25 },
 	},
-	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3, not_in_creative_inventory=1},
+	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3, not_in_creative_inventory=1, technic_lv=1},
 	sounds = default.node_sound_glass_defaults(),
 	drop = "lavalamp:lavalamp",
 	on_construct = unifieddyes.on_construct,
@@ -78,6 +81,7 @@ minetest.register_node("lavalamp:lavalamp_off", {
 		return itemstack
 	end,
 })
+technic.register_machine("LV", "lavalamp:lavalamp_off", technic.receiver)
 
 minetest.register_craft({
 	output = "lavalamp:lavalamp",

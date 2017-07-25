@@ -58,7 +58,7 @@ homedecor.register("chains", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-homedecor.register("torch_wall", {
+light.register_light("torch_wall", {
 	description = S("Wall Torch"),
 	mesh = "forniture_torch.obj",
 	tiles = {
@@ -83,14 +83,17 @@ homedecor.register("torch_wall", {
 		fixed = { -0.15, -0.45, 0.15, 0.15,0.35, 0.5 },
 	},
 	groups = {cracky=3},
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local wl_cbox = {
 	type = "fixed",
 	fixed = { -0.2, -0.5, 0, 0.2, 0.5, 0.5 },
 }
 
-homedecor.register("wall_lamp", {
+light.register_light("wall_lamp", {
 	description = S("Wall Lamp"),
 	mesh = "homedecor_wall_lamp.obj",
 	tiles = {
@@ -104,8 +107,11 @@ homedecor.register("wall_lamp", {
 	groups = {snappy=3},
 	light_source = 11,
 	selection_box = wl_cbox,
-	walkable = false
-})
+	walkable = false,
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 minetest.register_alias("3dforniture:bars", "homedecor:bars")
 minetest.register_alias("3dforniture:L_binding_bars", "homedecor:L_binding_bars")

@@ -173,7 +173,7 @@ minetest.register_node("building_blocks:grate", {
 	groups = {cracky=1},
 })
 
-minetest.register_node("building_blocks:Fireplace", {
+light.register_light("building_blocks:Fireplace", {
 	description = S("Fireplace"),
 	tiles = {
 		"building_blocks_cast_iron.png",
@@ -187,6 +187,9 @@ minetest.register_node("building_blocks:Fireplace", {
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {cracky=2},
+	-- For light mod
+	power_type="fuel",
+	burntime=5,
 })
 
 minetest.register_node("building_blocks:woodglass", {

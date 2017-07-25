@@ -96,7 +96,7 @@ local function checkwall(pos)
 	return true
 end
 
-minetest.register_node("plasmascreen:tv", {
+light.register_light("plasmascreen:tv", {
 	description = S("Plasma TV"),
 	drawtype = "mesh",
 	mesh = "plasmascreen_tv.obj",
@@ -129,7 +129,10 @@ minetest.register_node("plasmascreen:tv", {
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		minetest.set_node(pos, {name = "plasmascreen:tv_off", param2 = node.param2})
-	end
+	end,
+	-- For light
+	power_type="electric",
+	eu_demand=15,
 })
 
 minetest.register_node("plasmascreen:tv_off", {
@@ -144,11 +147,11 @@ minetest.register_node("plasmascreen:tv_off", {
 	wield_image = "plasmascreen_tv_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	light_source = 10,
+	light_source = 0,
 	selection_box = tv_cbox,
 	collision_box = tv_cbox,
 	on_rotate = screwdriver.disallow,
-	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
+	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1, technic_lv=1},
 	after_place_node = function(pos, placer, itemstack)
 		if not checkwall(pos) then
 			minetest.set_node(pos, {name = "air"})
@@ -158,8 +161,10 @@ minetest.register_node("plasmascreen:tv_off", {
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		minetest.set_node(pos, {name = "plasmascreen:tv", param2 = node.param2})
 	end,
-	drop = "plasmascreen:tv"
+	drop = "plasmascreen:tv",
 })
+
+technic.register_machine("LV", "plasmascreen:tv_off", technic.receiver)
 
 -- crafting recipes
 

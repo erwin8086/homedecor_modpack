@@ -14,7 +14,7 @@ computer.register("computer:shefriendSOO", {
 })
 
 -- Some generic laptop
-minetest.register_node("computer:vanio", {
+light.register_light("computer:vanio", {
 	drawtype = "mesh",
 	mesh = "computer_laptop.obj",
 	description = "Pony Vanio",
@@ -33,7 +33,10 @@ minetest.register_node("computer:vanio", {
 		node.name = "computer:vanio_off"
 		minetest.set_node(pos, node)
 		return itemstack
-	end
+	end,
+	-- Light mod
+	power_type="electric",
+	eu_demand=10,
 })
 
 minetest.register_node("computer:vanio_off", {
@@ -42,7 +45,7 @@ minetest.register_node("computer:vanio_off", {
 	tiles = {"computer_laptop.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {snappy=3, not_in_creative_inventory=1},
+	groups = {snappy=3, not_in_creative_inventory=1, technic_lv=1},
 	walkable = false,
 	selection_box = {
 		type = "fixed",
@@ -55,6 +58,8 @@ minetest.register_node("computer:vanio_off", {
 		return itemstack
 	end
 })
+
+technic.register_machine("LV","computer:vanio_off", technic.receiver)
 
 -- Sony PlayStation lookalike
 computer.register("computer:slaystation", {
@@ -116,7 +121,7 @@ computer.register("computer:wee", {
 })
 
 -- Apple iPad lookalike
-minetest.register_node("computer:piepad", {
+light.register_light("computer:piepad", {
 	description = "Snapple Piepad",
 	drawtype = "signlike",
 	tiles = {"computer_piepad_inv.png"},
@@ -128,7 +133,10 @@ minetest.register_node("computer:piepad", {
 	walkable = false,
 	groups = {oddly_breakable_by_hand=2},
 	selection_box = {type = "wallmounted"},
-	sounds = default.node_sound_wood_defaults()
+	sounds = default.node_sound_wood_defaults(),
+	-- For light
+	power_type="electric",
+	eu_demand=10,
 })
 
 -- Commodore 64 lookalike
@@ -181,7 +189,7 @@ minetest.register_node("computer:monitor", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = false,
-	groups = {snappy=3},
+	groups = {snappy=3, technic_lv=1},
 	selection_box = mo_sbox,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		node.name = "computer:monitor_on"
@@ -190,7 +198,9 @@ minetest.register_node("computer:monitor", {
 	end
 })
 
-minetest.register_node("computer:monitor_on", {
+technic.register_machine("LV","computer:monitor", technic.receiver)
+
+light.register_light("computer:monitor_on", {
 	drawtype = "mesh",
 	mesh = "computer_monitor.obj",
 	tiles = {"monitor_display.png^[transformFX", "monitor_plastic.png", "computer_black.png", "monitor_plastic.png"},
@@ -205,7 +215,10 @@ minetest.register_node("computer:monitor_on", {
 		node.name = "computer:monitor"
 		minetest.set_node(pos, node)
 		return itemstack
-	end
+	end,
+	-- For light
+	power_type="electric",
+	eu_demand=10,
 })
 
 minetest.register_alias("computer:monitor_bios", "computer:monitor")

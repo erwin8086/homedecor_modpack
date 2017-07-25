@@ -78,7 +78,7 @@ homedecor.register("projection_screen", {
 	},
 })
 
-homedecor.register("television", {
+light.register_light("television", {
 	description = S("Small CRT Television"),
 	tiles = { 'homedecor_television_top.png',
 		  'homedecor_television_bottom.png',
@@ -97,7 +97,10 @@ homedecor.register("television", {
 	light_source = default.LIGHT_MAX - 1,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
-})
+	-- For light
+	power_type="electric",
+	eu_demand=10,
+}, homedecor.register)
 
 homedecor.register("dvd_vcr", {
 	description = S("DVD and VCR"),

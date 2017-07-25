@@ -11,7 +11,7 @@ local glowlight_nodebox = {
 	},
 }
 
-minetest.register_node("homedecor:glowlight_half", {
+light.register_light("homedecor:glowlight_half", {
 	description = S("Thick Glowlight"),
 	tiles = {
 		"homedecor_glowlight_top.png",
@@ -48,10 +48,13 @@ minetest.register_node("homedecor:glowlight_half", {
 		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
 	end,
-	after_dig_node = unifieddyes.after_dig_node
+	after_dig_node = unifieddyes.after_dig_node,
+	-- For light
+	power_type="electric",
+	eu_demand=7,
 })
 
-minetest.register_node("homedecor:glowlight_quarter", {
+light.register_light("homedecor:glowlight_quarter", {
 	description = S("Thin Glowlight"),
 	tiles = {
 		"homedecor_glowlight_top.png",
@@ -88,10 +91,13 @@ minetest.register_node("homedecor:glowlight_quarter", {
 		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
 	end,
-	after_dig_node = unifieddyes.after_dig_node
+	after_dig_node = unifieddyes.after_dig_node,
+	-- For light
+	power_type="electric",
+	eu_demand=7,
 })
 
-minetest.register_node("homedecor:glowlight_small_cube", {
+light.register_light("homedecor:glowlight_small_cube", {
 	description = S("Small Glowlight Cube"),
 	tiles = {
 		"homedecor_glowlight_cube_tb.png",
@@ -128,10 +134,13 @@ minetest.register_node("homedecor:glowlight_small_cube", {
 		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
 	end,
-	after_dig_node = unifieddyes.after_dig_node
+	after_dig_node = unifieddyes.after_dig_node,
+	-- For light
+	power_type="electric",
+	eu_demand=7,
 })
 
-homedecor.register("plasma_lamp", {
+light.register_light("plasma_lamp", {
 	description = S("Plasma Lamp"),
 	drawtype = "mesh",
 	mesh = "plasma_lamp.obj",
@@ -147,9 +156,12 @@ homedecor.register("plasma_lamp", {
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
-})
+	-- For light
+	power_type="electric",
+	eu_demand=7,
+}, homedecor.register)
 
-homedecor.register("plasma_ball", {
+light.register_light("plasma_ball", {
 	description = S("Plasma Ball"),
 	mesh = "homedecor_plasma_ball.obj",
 	tiles = {
@@ -171,7 +183,10 @@ homedecor.register("plasma_ball", {
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
-})
+	-- For light
+	power_type="electric",
+	eu_demand=7,
+}, homedecor.register)
 
 local tc_cbox = {
 	type = "fixed",
@@ -180,7 +195,7 @@ local tc_cbox = {
 	}
 }
 
-homedecor.register("candle", {
+light.register_light("candle", {
 	description = S("Thick Candle"),
 	mesh = "homedecor_candle_thick.obj",
 	tiles = {
@@ -192,7 +207,10 @@ homedecor.register("candle", {
 	walkable = false,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-4,
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local c_cbox = {
 	type = "fixed",
@@ -201,7 +219,7 @@ local c_cbox = {
 	}
 }
 
-homedecor.register("candle_thin", {
+light.register_light("candle_thin", {
 	description = S("Thin Candle"),
 	mesh = "homedecor_candle_thin.obj",
 	tiles = {
@@ -213,7 +231,10 @@ homedecor.register("candle_thin", {
 	walkable = false,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-4,
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local cs_cbox = {
 	type = "fixed",
@@ -222,7 +243,7 @@ local cs_cbox = {
 	}
 }
 
-homedecor.register("candlestick_wrought_iron", {
+light.register_light("candlestick_wrought_iron", {
 	description = S("Candlestick (wrought iron)"),
 	mesh = "homedecor_candlestick.obj",
 	tiles = {
@@ -235,9 +256,12 @@ homedecor.register("candlestick_wrought_iron", {
 	walkable = false,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-4,
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
-homedecor.register("candlestick_brass", {
+light.register_light("candlestick_brass", {
 	description = S("Candlestick (brass)"),
 	mesh = "homedecor_candlestick.obj",
 	tiles = {
@@ -250,9 +274,12 @@ homedecor.register("candlestick_brass", {
 	walkable = false,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-4,
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
-homedecor.register("wall_sconce", {
+light.register_light("wall_sconce", {
 	description = S("Wall sconce"),
 	mesh = "homedecor_wall_sconce.obj",
 	tiles = {
@@ -269,7 +296,10 @@ homedecor.register("wall_sconce", {
 	walkable = false,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-4,
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local ol_cbox = {
 	type = "fixed",
@@ -278,7 +308,7 @@ local ol_cbox = {
 	}
 }
 
-homedecor.register("oil_lamp", {
+light.register_light("oil_lamp", {
 	description = S("Oil lamp (hurricane)"),
 	mesh = "homedecor_oil_lamp.obj",
 	tiles = {
@@ -296,9 +326,12 @@ homedecor.register("oil_lamp", {
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-3,
 	sounds = default.node_sound_glass_defaults(),
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
-homedecor.register("oil_lamp_tabletop", {
+light.register_light("oil_lamp_tabletop", {
 	description = S("Oil Lamp (tabletop)"),
 	mesh = "homedecor_oil_lamp_tabletop.obj",
 	tiles = {"homedecor_oil_lamp_tabletop.png"},
@@ -308,7 +341,10 @@ homedecor.register("oil_lamp_tabletop", {
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-3,
 	sounds = default.node_sound_glass_defaults(),
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local gl_cbox = {
 	type = "fixed",
@@ -317,7 +353,7 @@ local gl_cbox = {
 
 minetest.register_alias("homedecor:wall_lantern", "homedecor:ground_lantern")
 
-homedecor.register("ground_lantern", {
+light.register_light("ground_lantern", {
 	description = S("Ground Lantern"),
 	mesh = "homedecor_ground_lantern.obj",
 	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
@@ -327,15 +363,18 @@ homedecor.register("ground_lantern", {
 	groups = {snappy=3},
 	light_source = 11,
 	selection_box = gl_cbox,
-	walkable = false
-})
+	walkable = false,
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local hl_cbox = {
 	type = "fixed",
 	fixed = { -0.25, -0.5, -0.2, 0.25, 0.5, 0.5 },
 }
 
-homedecor.register("hanging_lantern", {
+light.register_light("hanging_lantern", {
 	description = S("Hanging Lantern"),
 	mesh = "homedecor_hanging_lantern.obj",
 	tiles = { "homedecor_generic_metal_wrought_iron.png", "homedecor_light.png" },
@@ -345,15 +384,18 @@ homedecor.register("hanging_lantern", {
 	groups = {snappy=3},
 	light_source = 11,
 	selection_box = hl_cbox,
-	walkable = false
-})
+	walkable = false,
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local cl_cbox = {
 	type = "fixed",
 	fixed = { -0.35, -0.45, -0.35, 0.35, 0.5, 0.35 }
 }
 
-homedecor.register("ceiling_lantern", {
+light.register_light("ceiling_lantern", {
 	drawtype = "mesh",
 	mesh = "homedecor_ceiling_lantern.obj",
 	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
@@ -363,18 +405,24 @@ homedecor.register("ceiling_lantern", {
 	groups = {snappy=3},
 	light_source = 11,
 	selection_box = cl_cbox,
-	walkable = false
-})
+	walkable = false,
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
-homedecor.register("lattice_lantern_large", {
+light.register_light("lattice_lantern_large", {
 	description = S("Lattice lantern (large)"),
 	tiles = { 'homedecor_lattice_lantern_large.png' },
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX,
 	sounds = default.node_sound_glass_defaults(),
-})
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
-homedecor.register("lattice_lantern_small", {
+light.register_light("lattice_lantern_small", {
 	description = S("Lattice lantern (small)"),
 	tiles = {
 		'homedecor_lattice_lantern_small_tb.png',
@@ -392,8 +440,11 @@ homedecor.register("lattice_lantern_small", {
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-1,
 	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node
-})
+	on_place = minetest.rotate_node,
+	-- For light
+	power_type="fuel",
+	burntime=10,
+}, homedecor.register)
 
 local brightness_tab = {
 	0xffd0d0d0,
@@ -432,11 +483,19 @@ local slamp_cbox = {
 	fixed = { -0.25, -0.5, -0.25, 0.25, 1.5, 0.25 }
 }
 
+local reg_light = light.register_light
+
 local function reg_lamp(suffix, nxt, light, brightness)
 
 	local wool_brighten = (light or 0) * 15
+	local reg
+	if suffix == "off" then
+		reg = homedecor.register
+	else
+		reg = reg_light
+	end
 
-	homedecor.register("table_lamp_"..suffix, {
+	reg("table_lamp_"..suffix, {
 		description = S("Table Lamp"),
 		mesh = "homedecor_table_lamp.obj",
 		tiles = {
@@ -456,18 +515,28 @@ local function reg_lamp(suffix, nxt, light, brightness)
 		sounds = default.node_sound_wood_defaults(),
 		groups = {cracky=2,oddly_breakable_by_hand=1, ud_param2_colorable = 1,
 			not_in_creative_inventory=((light ~= nil) and 1) or nil,
+			technic_lv = 1,
 		},
 		drop = "homedecor:table_lamp_off",
 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			node.name = "homedecor:table_lamp_"..repl[suffix]
+			if repl[suffix] == "off" then
+				node.name = "homedecor:table_lamp_"..repl[suffix]
+			else
+				node.name = "homedecor:table_lamp_"..repl[suffix].."_on"
+			end
 			minetest.set_node(pos, node)
+			local meta = minetest.get_meta(pos)
+			meta:set_int("LV_EU_input", 5+brightness+1)
 		end,
 		on_construct = unifieddyes.on_construct,
 		after_place_node = unifieddyes.recolor_on_place,
-		after_dig_node = unifieddyes.after_dig_node
-	})
+		after_dig_node = unifieddyes.after_dig_node,
+		-- For light
+		power_type="electric",
+		eu_demand=5+brightness,
+	}, homedecor.register)
 
-	homedecor.register("standing_lamp_"..suffix, {
+	reg("standing_lamp_"..suffix, {
 		description = S("Standing Lamp"),
 		mesh = "homedecor_standing_lamp.obj",
 		tiles = {
@@ -485,19 +554,30 @@ local function reg_lamp(suffix, nxt, light, brightness)
 		light_source = light,
 		groups = {cracky=2,oddly_breakable_by_hand=1, ud_param2_colorable = 1,
 			not_in_creative_inventory=((light ~= nil) and 1) or nil,
+			technic_lv = 1,
+			
 		},
 		selection_box = slamp_cbox,
 		sounds = default.node_sound_wood_defaults(),
 		on_rotate = screwdriver.rotate_simple,
 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			node.name = "homedecor:standing_lamp_"..repl[suffix]
+			if repl[suffix] == "off" then
+				node.name = "homedecor:standing_lamp_"..repl[suffix]
+			else
+				node.name = "homedecor:standing_lamp_"..repl[suffix].."_on"
+			end
 			minetest.set_node(pos, node)
+			local meta = minetest.get_meta(pos)
+			meta:set_int("LV_EU_input", 5+brightness+1)
 		end,
 		on_construct = unifieddyes.on_construct,
 		after_place_node = unifieddyes.recolor_on_place,
 		after_dig_node = unifieddyes.after_dig_node,
 		expand = { top="air" },
-	})
+		-- For light
+		power_type="electric",
+		eu_demand=5+brightness,
+	}, homedecor.register)
 
 	-- for old maps that had the original 3dforniture mod
 	minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
@@ -508,6 +588,8 @@ reg_lamp("low", "med",  3,   2 )
 reg_lamp("med", "hi",   7,   3 )
 reg_lamp("hi",  "max", 11,   4 )
 reg_lamp("max", "off", 14,   5 )
+technic.register_machine("LV","homedecor:standing_lamp_off", technic.receiver)
+technic.register_machine("LV","homedecor:table_lamp_off", technic.receiver)
 
 -- "gooseneck" style desk lamps
 
@@ -516,7 +598,7 @@ local dlamp_cbox = {
 	wall_side = { -0.2, -0.5, -0.15, 0.32, 0.12, 0.15 },
 }
 
-homedecor.register("desk_lamp", {
+light.register_light("desk_lamp", {
 	description = S("Desk Lamp"),
 	mesh = "homedecor_desk_lamp.obj",
 	tiles = {
@@ -530,6 +612,7 @@ homedecor.register("desk_lamp", {
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = dlamp_cbox,
+	light_source = default.LIGHT_MAX,
 	node_box = dlamp_cbox,
 	walkable = false,
 	groups = {snappy=3, ud_param2_colorable = 1},
@@ -538,12 +621,15 @@ homedecor.register("desk_lamp", {
 		unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
 	end,
 	after_dig_node = unifieddyes.after_dig_node,
-	on_rotate = unifieddyes.fix_after_screwdriver_nsew
-})
+	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
+	-- For light
+	power_type="electric",
+	eu_demand=5,
+}, homedecor.register)
 
 -- "kitchen"/"dining room" ceiling lamp
 
-homedecor.register("ceiling_lamp", {
+light.register_light("ceiling_lamp", {
 	description = S("Ceiling Lamp"),
 	mesh = "homedecor_ceiling_lamp.obj",
 	tiles = {
@@ -559,7 +645,10 @@ homedecor.register("ceiling_lamp", {
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		minetest.set_node(pos, {name = "homedecor:ceiling_lamp_off"})
 	end,
-})
+	-- For light
+	power_type="electric",
+	eu_demand=7,
+}, homedecor.register)
 
 homedecor.register("ceiling_lamp_off", {
 	description = S("Ceiling Lamp (off)"),
@@ -570,13 +659,16 @@ homedecor.register("ceiling_lamp_off", {
 		{ "homedecor_table_standing_lamp_lightbulb.png", color = 0xffd0d0d0 },
 		{ name = "homedecor_generic_plastic.png", color = 0xff442d04 },
 	},
-	groups = {snappy=3, not_in_creative_inventory=1},
+	groups = {snappy=3, not_in_creative_inventory=1, technic_lv=1},
 	walkable = false,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		minetest.set_node(pos, {name = "homedecor:ceiling_lamp"})
 	end,
 	drop = "homedecor:ceiling_lamp"
 })
+
+technic.register_machine("LV","homedecor:ceiling_lamp_off", technic.receiver)
+
 
 -- conversion LBM for param2 coloring
 

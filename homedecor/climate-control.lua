@@ -79,7 +79,7 @@ homedecor.register("desk_fan", {
 
 -- ceiling fan
 
-homedecor.register("ceiling_fan", {
+light.register_light("ceiling_fan", {
 	description = S("Ceiling Fan"),
 	tiles = {
 		{	name="homedecor_ceiling_fan_top.png",
@@ -99,7 +99,10 @@ homedecor.register("ceiling_fan", {
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-1,
 	sounds = default.node_sound_glass_defaults(),
-})
+	-- For light
+	power_type="electric",
+	eu_demand=7,
+}, homedecor.register)
 
 -- heating devices
 
